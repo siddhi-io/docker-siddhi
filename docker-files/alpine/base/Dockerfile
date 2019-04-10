@@ -59,7 +59,6 @@ RUN \
     && chown ${USER}:${USER_GROUP} -R ${RUNTIME_SERVER_HOME} \
     && rm -f ${RUNTIME_SERVER_PACK}.zip
 
-
 # use the Siddhi Runner Distribution available locally
 # Note: Comment the RUN command under 'Download Siddhi Distribution' heading and uncomment the below COPY command
 # COPY --chown=${USER}:${USER_GROUP} ${FILES}/${RUNTIME_SERVER_PACK}/ ${RUNTIME_SERVER_HOME}/
