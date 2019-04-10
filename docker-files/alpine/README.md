@@ -6,7 +6,7 @@ This section defines the step-by-step instructions to build [Ubuntu](https://hub
 
 * [Docker](https://www.docker.com/get-docker) v17.09.0 or above
 
-## How to build the WSO2 Stream Processor images and run
+## How to build the Siddhi Runner images and run
 
 ##### 1. Checkout this repository into your local machine using the following Git command.
 

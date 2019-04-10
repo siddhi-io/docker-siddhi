@@ -28,7 +28,7 @@ ARG USER_GROUP_ID=802
 ARG USER_HOME=/home/${USER}
 # set dependant files directory
 ARG FILES=./files
-# set wso2 product configurations
+# set siddhi runner configurations
 ARG RUNTIME_SERVER=siddhi-runner
 ARG RUNTIME_SERVER_VERSION=1.0.0-m3
 ARG RUNTIME_SERVER_PACK=${RUNTIME_SERVER}-${RUNTIME_SERVER_VERSION}

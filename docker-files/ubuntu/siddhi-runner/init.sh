@@ -23,10 +23,10 @@ docker_container_ip=$(awk 'END{print $1}' /etc/hosts)
 # capture Docker container IP from the container's /etc/hosts file
 docker_container_ip=$(awk 'END{print $1}' /etc/hosts)
 
-# check if the WSO2 non-root user home exists
+# check if the siddhi-io non-root user home exists
 test ! -d ${WORKING_DIRECTORY} && echo "Siddhi Runner Docker non-root user home does not exist" && exit 1
 
-# check if the WSO2 product home exists
+# check if the Siddhi Runner home exists
 test ! -d ${RUNTIME_SERVER_HOME} && echo "Siddhi Runner Home does not exist" && exit 1
 
 # start the Siddhi Runner profile
