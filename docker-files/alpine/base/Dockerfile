@@ -16,8 +16,8 @@
 #
 # ------------------------------------------------------------------------
 
-# set base Docker image to AdoptOpenJDK Ubuntu Docker image
-FROM adoptopenjdk/openjdk8:jdk8u192-b12
+# set base Docker image to AdoptOpenJDK Alpine Docker image
+FROM adoptopenjdk/openjdk8:jdk8u192-b12-alpine
 MAINTAINER Siddhi IO Docker Maintainers "siddhi-dev@googlegroups.com"
 
 # set user configurations
@@ -41,21 +41,14 @@ This Docker container comprises of a SIDDHI-IO product, running with its latest 
 which is under the Apache License, Version 2.0. \n\
 Read more about Apache License, Version 2.0 here @ http://www.apache.org/licenses/LICENSE-2.0.\n"
 
-# install required packages
-RUN \
-    apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        java-common \
-        netcat \
-        unzip \
-        wget \
-    && rm -rf /var/lib/apt/lists/* \
-    && echo '[ ! -z "${TERM}" -a -r /etc/motd ] && cat /etc/motd' >> /etc/bash.bashrc; echo "${MOTD}" > /etc/motd
 
-# create the user and group
-RUN \
-    groupadd --system -g ${USER_GROUP_ID} ${USER_GROUP} \
-    && useradd --system --create-home --home-dir ${USER_HOME} --no-log-init -g ${USER_GROUP_ID} -u ${USER_ID} ${USER}
+# install required packages
+RUN  apk add --update --no-cache netcat-openbsd && \
+     rm -rf /var/cache/apk/*
+
+# create a user group and a user
+RUN  addgroup -g ${USER_GROUP_ID} ${USER_GROUP}; \
+     adduser -u ${USER_ID} -D -g '' -h ${USER_HOME} -G ${USER_GROUP} ${USER} ;
 
 ## install the Siddhi Distribution to user's home directory
 
@@ -65,6 +58,7 @@ RUN \
     && unzip -d ${USER_HOME} ${RUNTIME_SERVER_PACK}.zip \
     && chown ${USER}:${USER_GROUP} -R ${RUNTIME_SERVER_HOME} \
     && rm -f ${RUNTIME_SERVER_PACK}.zip
+
 
 # use the Siddhi Runner Distribution available locally
 # Note: Comment the RUN command under 'Download Siddhi Distribution' heading and uncomment the below COPY command
