@@ -22,23 +22,23 @@ git clone https://github.com/siddhi-io/docker-siddhi.git
 
 - For base, navigate to `<DOCKERFILE_HOME>/base` directory. <br>
   Execute `docker build` command as shown below.
-    + `docker build -t siddhi-runner-base:1.0.0 .`
+    + `docker build -t siddhi-runner-base:0.1.0 .`
 
 ##### 4. Convert and copy the needed client jars and extensions to `<DOCKERFILE_HOME>/base/files/lib` directory
 
-> Use the `jartobundle.sh` script found it `siddhi-runner-1.0.0/bin` as shown below; note that you will have to run this command for each jar mentioned above
+> Use the `jartobundle.sh` script found it `siddhi-runner-0.1.0/bin` as shown below; note that you will have to run this command for each jar mentioned above
 
   ```
-  ./siddhi-runner-1.0.0/bin/jartobundle.sh path/to/kafka/client/jar <DOCKERFILE_HOME>/siddhi-runner/files/lib
+  ./siddhi-runner-0.1.0/bin/jartobundle.sh path/to/kafka/client/jar <DOCKERFILE_HOME>/siddhi-runner/files/lib
   ```        
 ##### 5. Build Docker image.
 
   Execute `docker build` command as shown below. 
-    + `docker build -t siddhi-runner:1.0.0 .`
+    + `docker build -t siddhi-runner:0.1.0 .`
     
 ##### 6. Running Docker image.
 
-    + `docker run -it siddhi-runner:1.0.0`
+    + `docker run -it siddhi-runner:0.1.0`
 
 ## Docker command usage references
 

@@ -30,7 +30,7 @@ ARG USER_HOME=/home/${USER}
 ARG FILES=./files
 # set siddhi runner configurations
 ARG RUNTIME_SERVER=siddhi-runner
-ARG RUNTIME_SERVER_VERSION=1.0.0-m3
+ARG RUNTIME_SERVER_VERSION=0.1.0
 ARG RUNTIME_SERVER_PACK=${RUNTIME_SERVER}-${RUNTIME_SERVER_VERSION}
 ARG RUNTIME_SERVER_HOME=${USER_HOME}/${RUNTIME_SERVER_PACK}
 # set SIDDHI-IO EULA
@@ -61,7 +61,7 @@ RUN \
 
 # use the Siddhi Runner Distribution available locally
 # Note: Comment the RUN command under 'Download Siddhi Distribution' heading and uncomment the below COPY command
-# COPY --chown=${USER}:${USER_GROUP} ${FILES}/${RUNTIME_SERVER_PACK}/ ${RUNTIME_SERVER_HOME}/
+#COPY --chown=siddhi_user:siddhi_io ${FILES}/${RUNTIME_SERVER_PACK}/ ${RUNTIME_SERVER_HOME}/
 
 # set the user and work directory
 USER ${USER_ID}
