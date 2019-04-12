@@ -1,6 +1,6 @@
 # Dockerfiles for Siddhi Parser #
 
-This section defines the step-by-step instructions to build [Ubuntu](https://hub.docker.com/_/ubuntu/) Linux based Docker image for Siddhi Parser Service 1.0.0.
+This section defines the step-by-step instructions to build [Ubuntu](https://hub.docker.com/_/ubuntu/) Linux based Docker image for Siddhi Parser Service 0.1.0.
 
 ## Prerequisites
 
@@ -22,11 +22,11 @@ git clone https://github.com/siddhi-io/docker-siddhi.git
 
 - For base, navigate to `<DOCKERFILE_HOME>/siddhi-parser/alpine` directory. <br>
   Execute `docker build` command as shown below.
-    + `docker build -t siddhi-parser-alpine:1.0.0 .`
+    + `docker build -t siddhi-parser-alpine:0.1.0 .`
     
 ##### 5. Running Docker image.
 
-    + `docker run -it siddhi-parser-alpine:1.0.0`
+    + `docker run -it siddhi-parser-alpine:0.1.0`
 
 ## Docker command usage references
 
