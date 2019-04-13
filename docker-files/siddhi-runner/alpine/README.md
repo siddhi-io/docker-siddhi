@@ -14,7 +14,7 @@ This section defines the step-by-step instructions to build [Ubuntu](https://hub
 git clone https://github.com/siddhi-io/docker-siddhi.git
 ```
 
->The local copy of the `dockerfiles/alpine` directory will be referred to as `DOCKERFILE_HOME` from this point onwards.
+>The local copy of the `docker-files/siddhi-runner/alpine` directory will be referred to as `DOCKERFILE_HOME` from this point onwards.
 
 ##### 2. If you need to use the Siddhi Runner distribution that is locally available, copy the distribution to `<DOCKERFILE_HOME>/base/files`.
 

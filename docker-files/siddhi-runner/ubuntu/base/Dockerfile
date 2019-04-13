@@ -68,7 +68,7 @@ RUN \
 
 # use the Siddhi Runner Distribution available locally
 # Note: Comment the RUN command under 'Download Siddhi Distribution' heading and uncomment the below COPY command
-# COPY --chown=${USER}:${USER_GROUP} ${FILES}/${RUNTIME_SERVER_PACK}/ ${RUNTIME_SERVER_HOME}/
+# COPY --chown=siddhi_user:siddhi_io ${FILES}/${RUNTIME_SERVER_PACK}/ ${RUNTIME_SERVER_HOME}/
 
 # set the user and work directory
 USER ${USER_ID}
