@@ -16,17 +16,17 @@ git clone https://github.com/siddhi-io/docker-siddhi.git
 
 >The local copy of the `dockerfiles/siddhi-parser/alpine` directory will be referred to as `DOCKERFILE_HOME` from this point onwards.
 
-##### 2.Copy Siddhi Parser JAR and extension JARS to `dockerfiles/siddhi-parser/alpine/files` and `dockerfiles/siddhi-parser/alpine/files/lib` respectively.
+##### 2.Copy Siddhi Parser JAR and extension JARS to `<DOCKERFILE_HOME>/files` and `<DOCKERFILE_HOME>/files/lib` respectively.
 
 ##### 3. Build the Docker image.
 
-- For base, navigate to `<DOCKERFILE_HOME>/siddhi-parser/alpine` directory. <br>
+- Navigate to `<DOCKERFILE_HOME>` directory. <br>
   Execute `docker build` command as shown below.
-    + `docker build -t siddhi-parser-alpine:0.1.0 .`
+    + `docker build -t siddhi-parser-alpine:v0.1.0 .`
     
 ##### 5. Running Docker image.
 
-    + `docker run -it siddhi-parser-alpine:0.1.0`
+    + `docker run -it siddhi-parser-alpine:v0.1.0`
 
 ## Docker command usage references
 
