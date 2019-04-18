@@ -17,7 +17,7 @@
 # ------------------------------------------------------------------------
 
 # use siddhi-runner-base
-FROM siddhi-runner-alpine-base:0.1.0
+FROM siddhi-runner-base-alpine:0.1.0
 MAINTAINER Siddhi IO Docker Maintainers "siddhi-dev@googlegroups.com"
 
 ARG BUNDLE_JAR_DIR=./files/lib
