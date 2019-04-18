@@ -29,5 +29,10 @@ test ! -d ${WORKING_DIRECTORY} && echo "Siddhi Runner Docker non-root user home 
 # check if the Siddhi Runner home exists
 test ! -d ${RUNTIME_SERVER_HOME} && echo "Siddhi Runner Home does not exist" && exit 1
 
+exit_func() {
+        exit 1
+}
+trap exit_func SIGTERM SIGINT
+
 # start the Siddhi Runner profile
-sh ${RUNTIME_SERVER_HOME}/bin/runner.sh "$@"
+exec ${RUNTIME_SERVER_HOME}/bin/runner.sh "$@"
