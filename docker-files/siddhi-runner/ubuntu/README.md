@@ -23,7 +23,7 @@ git clone https://github.com/siddhi-io/docker-siddhi.git
 
 - For base, navigate to `<DOCKERFILE_HOME>/base` directory. <br>
   Execute `docker build` command as shown below.
-    + `docker build -t siddhi-runner-ubuntu-base:0.1.0 .`
+    + `docker build -t siddhi-runner-base-ubuntu:0.1.0 .`
 
 ### Building the Siddhi Runner Image
 Here we create the Siddhi Runner image bundling the needed extensions and client jars.
