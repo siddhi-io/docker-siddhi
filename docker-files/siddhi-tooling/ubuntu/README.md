@@ -23,7 +23,7 @@ git clone https://github.com/siddhi-io/docker-siddhi.git
 
 - For base, navigate to `<DOCKERFILE_HOME>/base` directory. <br>
   Execute `docker build` command as shown below.
-    + `docker build -t siddhi-tooling-base-ubuntu:0.1.0 .`
+    + `docker build -t siddhi-tooling-base:0.1.0 .`
 
 ### Building the Siddhi Tooling Image
 Here we create the Siddhi Tooling image bundling the needed extensions and client jars.
@@ -37,11 +37,11 @@ Optional:
 ##### 3. Build Docker image.
 
   Execute `docker build` command as shown below. 
-    + `docker build -t siddhi-tooling-ubuntu:0.1.0 .`
+    + `docker build -t siddhi-tooling:0.1.0 .`
     
 ##### 4. Running Docker image.
 
-    + `docker run -it siddhi-tooling-ubuntu:0.1.0`
+    + `docker run -it siddhi-tooling:0.1.0`
 
 ## Docker command usage references
 
