@@ -1,7 +1,7 @@
 Docker Resources for Siddhi Cloud Native Streaming
 ====================================================
 
-This repository contains the **Siddhi Runner** and **Siddhi Parser** resources for Alpine and Ubuntu.
+This repository contains the **Siddhi Runner**, **Siddhi Tooling** and **Siddhi Parser** resources for Alpine and Ubuntu.
 
 These Docker resources would help you building generic Docker images for deploying the
 corresponding distributions in containerized environments. Each Docker image includes the JDK, the relevant product distribution
