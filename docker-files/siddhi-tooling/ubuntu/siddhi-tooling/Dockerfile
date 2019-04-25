@@ -17,7 +17,7 @@
 # ------------------------------------------------------------------------
 
 # use siddhi-tooling-base
-FROM siddhi-tooling-base-ubuntu:0.1.0
+FROM siddhi-tooling-base:0.1.0
 MAINTAINER Siddhi IO Docker Maintainers "siddhi-dev@googlegroups.com"
 
 ARG BUNDLE_JAR_DIR=./files/lib
