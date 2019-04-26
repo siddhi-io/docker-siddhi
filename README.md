@@ -16,4 +16,5 @@ extensions and other deployable artifacts can be added to the image while buildi
 These container images are published under **siddhiio** on the Docker hub, at:
 1. [siddhiio/siddhi-runner-alpine](https://hub.docker.com/r/siddhiio/siddhi-runner-alpine)
 2. [siddhiio/siddhi-runner-ubuntu](https://hub.docker.com/r/siddhiio/siddhi-runner-ubuntu)
-2. [siddhiio/siddhi-parser](https://hub.docker.com/r/siddhiio/siddhi-parser)
+3. [siddhiio/siddhi-tooling](https://hub.docker.com/r/siddhiio/siddhi-tooling)
+4. [siddhiio/siddhi-parser](https://hub.docker.com/r/siddhiio/siddhi-parser)
