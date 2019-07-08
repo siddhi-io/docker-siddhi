@@ -41,7 +41,7 @@ Optional:
     
 ##### 4. Running Docker image.
 
-    + `docker run -it siddhi-tooling:5.1.x`
+    + `docker run -it -p 9390:9390 siddhi-tooling:5.1.x`    
 
 ## Docker command usage references
 
