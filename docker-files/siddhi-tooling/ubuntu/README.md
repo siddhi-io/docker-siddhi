@@ -1,6 +1,6 @@
 # Dockerfiles for Siddhi Tooling #
 
-This section defines the step-by-step instructions to build [Ubuntu](https://hub.docker.com/_/ubuntu/) Linux based Docker image for Siddhi Tooling Distribution 0.1.0.
+This section defines the step-by-step instructions to build [Ubuntu](https://hub.docker.com/_/ubuntu/) Linux based Docker image for Siddhi Tooling Distribution 5.1.x.
 
 ## Prerequisites
 
@@ -23,25 +23,25 @@ git clone https://github.com/siddhi-io/docker-siddhi.git
 
 - For base, navigate to `<DOCKERFILE_HOME>/base` directory. <br>
   Execute `docker build` command as shown below.
-    + `docker build -t siddhi-tooling-base:0.1.0 .`
+    + `docker build -t siddhiio/siddhi-tooling-base:5.1.x .`
 
 ### Building the Siddhi Tooling Image
 Here we create the Siddhi Tooling image bundling the needed extensions and client jars.
 
 Optional:  
-> Use the `jartobundle.sh` script found in `siddhi-tooling-0.1.0/bin` as shown below; note that you will have to run this command for each jar you need to bundle in the image.
+> Use the `jartobundle.sh` script found in `siddhi-tooling-5.1.x/bin` as shown below; note that you will have to run this command for each jar you need to bundle in the image.
 
   ```
-  ./siddhi-tooling-0.1.0/bin/jartobundle.sh path/to/kafka/client/jar <DOCKERFILE_HOME>/siddhi-tooling/files/lib
+  ./siddhi-tooling-5.1.x/bin/jartobundle.sh path/to/kafka/client/jar <DOCKERFILE_HOME>/siddhi-tooling/files/lib
   ```        
 ##### 3. Build Docker image.
 
   Execute `docker build` command as shown below. 
-    + `docker build -t siddhi-tooling:0.1.0 .`
+    + `docker build -t siddhi-tooling:5.1.x .`
     
 ##### 4. Running Docker image.
 
-    + `docker run -it siddhi-tooling:0.1.0`
+    + `docker run -it siddhi-tooling:5.1.x`
 
 ## Docker command usage references
 
