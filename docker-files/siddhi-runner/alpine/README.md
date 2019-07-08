@@ -29,10 +29,10 @@ git clone https://github.com/siddhi-io/docker-siddhi.git
 Here we create the Siddhi Runner image bundling the needed extensions and client jars.
 
 Optional: 
-> Use the `jartobundle.sh` script found in `siddhi-runner-0.1.x/bin` as shown below; note that you will have to run this command for each jar you need to bundle in the image.
+> Use the `jartobundle.sh` script found in `siddhi-runner-5.1.x/bin` as shown below; note that you will have to run this command for each jar you need to bundle in the image.
 
   ```
-  ./siddhi-runner-0.1.x/bin/jartobundle.sh path/to/kafka/client/jar <DOCKERFILE_HOME>/siddhi-runner/files/lib
+  ./siddhi-runner-5.1.x/bin/jartobundle.sh path/to/kafka/client/jar <DOCKERFILE_HOME>/siddhi-runner/files/lib
   ```        
 ##### 5. Build Docker image.
 
