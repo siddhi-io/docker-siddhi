@@ -30,7 +30,7 @@ ARG USER_HOME=/home/${USER}
 ARG FILES=./files
 # set siddhi runner configurations
 ARG SIDDHI_PARSER_SERVICE_PACKAGENAME=siddhi.parser
-ARG SIDDHI_PARSER_VERSION=0.1.0
+ARG SIDDHI_PARSER_VERSION=0.2.0-m1
 ARG SIDDHI_PARSER_SERVICE_JAR=${SIDDHI_PARSER_SERVICE_PACKAGENAME}-${SIDDHI_PARSER_VERSION}.jar
 # set SIDDHI-IO EULA
 ARG MOTD="\n\
@@ -58,4 +58,4 @@ ENV WORKING_DIRECTORY=${USER_HOME}
 # copy Siddhi Parser Service JAR and dependencies
 COPY --chown=siddhi_user:siddhi_io ./files ${WORKING_DIRECTORY}/
 
-CMD ["java", "-cp", "siddhi.parser-0.1.0.jar:lib/*", "io.siddhi.operator.parser.services.Application"]
+CMD ["java", "-cp", "siddhi.parser-0.2.0-m1.jar:lib/*", "io.siddhi.operator.parser.services.Application"]
