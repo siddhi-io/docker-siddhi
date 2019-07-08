@@ -1,6 +1,6 @@
 # Dockerfiles for Siddhi Runner #
 
-This section defines the step-by-step instructions to build [Alpine](https://hub.docker.com/_/alpine/) Linux based Docker image for Siddhi Runner Distribution 0.1.0.
+This section defines the step-by-step instructions to build [Alpine](https://hub.docker.com/_/alpine/) Linux based Docker image for Siddhi Runner Distribution 5.1.x.
 
 ## Prerequisites
 
@@ -23,25 +23,25 @@ git clone https://github.com/siddhi-io/docker-siddhi.git
 
 - For base, navigate to `<DOCKERFILE_HOME>/base` directory. <br>
   Execute `docker build` command as shown below.
-    + `docker build -t siddhi-runner-base-alpine:0.1.0 .`
+    + `docker build -t siddhiio/siddhi-runner-base-alpine:5.1.x .`
 
 ### Building the Siddhi Runner Image
 Here we create the Siddhi Runner image bundling the needed extensions and client jars.
 
 Optional: 
-> Use the `jartobundle.sh` script found in `siddhi-runner-0.1.0/bin` as shown below; note that you will have to run this command for each jar you need to bundle in the image.
+> Use the `jartobundle.sh` script found in `siddhi-runner-5.1.x/bin` as shown below; note that you will have to run this command for each jar you need to bundle in the image.
 
   ```
-  ./siddhi-runner-0.1.0/bin/jartobundle.sh path/to/kafka/client/jar <DOCKERFILE_HOME>/siddhi-runner/files/lib
+  ./siddhi-runner-5.1.x/bin/jartobundle.sh path/to/kafka/client/jar <DOCKERFILE_HOME>/siddhi-runner/files/lib
   ```        
 ##### 5. Build Docker image.
 
   Execute `docker build` command as shown below. 
-    + `docker build -t siddhi-runner-alpine:0.1.0 .`
+    + `docker build -t siddhi-runner-alpine:5.1.x .`
     
 ##### 6. Running Docker image.
 
-    + `docker run -it siddhi-runner-alpine:0.1.0`
+    + `docker run -it siddhi-runner-alpine:5.1.x`
 
 ## Docker command usage references
 
