@@ -17,20 +17,25 @@
 # ------------------------------------------------------------------------
 
 # use siddhi-tooling-base
-FROM siddhiio/siddhi-tooling-base:5.1.0-m1
+FROM siddhiio/siddhi-tooling-base:5.1.0-m2
 MAINTAINER Siddhi IO Docker Maintainers "siddhi-dev@googlegroups.com"
 
-ARG BUNDLE_JAR_DIR=./files/lib
-ARG LIB=${RUNTIME_SERVER_HOME}/lib
+ARG HOST_BUNDLES_DIR=./files/bundles
+ARG HOST_JARS_DIR=./files/jars
+ARG JARS=${RUNTIME_SERVER_HOME}/jars
+ARG BUNDLES=${RUNTIME_SERVER_HOME}/bundles
 
 # copy entrypoint bash script to user home
 COPY --chown=siddhi_user:siddhi_io init.sh ${WORKING_DIRECTORY}/
 
-# copy bundle jars to the siddhi-tooling pack
-COPY --chown=siddhi_user:siddhi_io ${BUNDLE_JAR_DIR}/ ${LIB}
+# copy bundles & jars to the siddhi-tooling distribution
+COPY --chown=siddhi_user:siddhi_io ${HOST_BUNDLES_DIR}/ ${BUNDLES}
+COPY --chown=siddhi_user:siddhi_io ${HOST_JARS_DIR}/ ${JARS}
 
 # expose ports
 EXPOSE 9743 9390 7370 7714 7614 9614 9714
+
+RUN bash ${RUNTIME_SERVER_HOME}/bin/install-jars.sh
 
 STOPSIGNAL SIGINT
 

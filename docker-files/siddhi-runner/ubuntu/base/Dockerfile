@@ -30,7 +30,7 @@ ARG USER_HOME=/home/${USER}
 ARG FILES=./files
 # set siddhi-runner configurations
 ARG RUNTIME_SERVER=siddhi-runner
-ARG RUNTIME_SERVER_VERSION=5.1.0-m1
+ARG RUNTIME_SERVER_VERSION=5.1.0-m2
 ARG RUNTIME_SERVER_PACK=${RUNTIME_SERVER}-${RUNTIME_SERVER_VERSION}
 ARG RUNTIME_SERVER_HOME=${USER_HOME}/${RUNTIME_SERVER}
 # set SIDDHI-IO EULA
@@ -41,6 +41,11 @@ This Docker container comprises of a SIDDHI-IO product, running with its latest 
 which is under the Apache License, Version 2.0. \n\
 Read more about Apache License, Version 2.0 here @ http://www.apache.org/licenses/LICENSE-2.0.\n"
 
+# create the user and group
+RUN \
+    groupadd --system -g ${USER_GROUP_ID} ${USER_GROUP} \
+    && useradd --system --create-home --home-dir ${USER_HOME} --no-log-init -g ${USER_GROUP_ID} -u ${USER_ID} ${USER}
+
 # install required packages
 RUN \
     apt-get update \
@@ -49,13 +54,9 @@ RUN \
         netcat \
         unzip \
         wget \
+        bash \
     && rm -rf /var/lib/apt/lists/* \
     && echo '[ ! -z "${TERM}" -a -r /etc/motd ] && cat /etc/motd' >> /etc/bash.bashrc; echo "${MOTD}" > /etc/motd
-
-# create the user and group
-RUN \
-    groupadd --system -g ${USER_GROUP_ID} ${USER_GROUP} \
-    && useradd --system --create-home --home-dir ${USER_HOME} --no-log-init -g ${USER_GROUP_ID} -u ${USER_ID} ${USER}
 
 ## install the Siddhi Distribution to user's home directory
 

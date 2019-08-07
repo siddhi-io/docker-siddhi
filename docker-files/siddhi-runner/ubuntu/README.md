@@ -26,20 +26,19 @@ git clone https://github.com/siddhi-io/docker-siddhi.git
     + `docker build -t siddhiio/siddhi-runner-base-ubuntu:5.1.x .`
 
 ### Building the Siddhi Runner Image
+
+##### 1. Bundling Jars and Bundles
 Here we create the Siddhi Runner image bundling the needed extensions and client jars.
-
-Optional:  
-> Use the `jartobundle.sh` script found in `siddhi-runner-5.1.x/bin` as shown below; note that you will have to run this command for each jar you need to bundle in the image.
-
-  ```
-  ./siddhi-runner-5.1.x/bin/jartobundle.sh path/to/kafka/client/jar <DOCKERFILE_HOME>/siddhi-runner/files/lib
-  ```        
-##### 3. Build Docker image.
-
+       
+<DOCKERFILE_HOME>/siddhi-runner/files/ contains two directories (bundles and jars directories) where you can copy the Jars and Bundles you need to bundle into the docker image.
+1. Jars directory - Maintained for Jar files which may not have their corresponding OSGi bundle implementation. These Jars will be converted as OSGI bundles and copied to Siddhi Runner docker image during docker build phase. 
+2. Bundles directory - Maintained for OSGI bundles which you need to copy to Siddhi Runner docker image directory during docker build phase.
+  
+##### 2. Build the Runner Docker image
   Execute `docker build` command as shown below. 
     + `docker build -t siddhi-runner-ubuntu:5.1.x .`
     
-##### 4. Running Docker image.
+### Running Docker image.
 
     + `docker run -it siddhi-runner-ubuntu:5.1.x`
 
