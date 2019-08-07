@@ -17,7 +17,7 @@
 # ------------------------------------------------------------------------
 
 # set base Docker image to AdoptOpenJDK Alpine Docker image
-FROM adoptopenjdk/openjdk8:jdk8u192-b12-alpine
+FROM adoptopenjdk/openjdk8:jdk8u212-b03-alpine
 MAINTAINER Siddhi IO Docker Maintainers "siddhi-dev@googlegroups.com"
 
 # set user configurations
@@ -30,7 +30,7 @@ ARG USER_HOME=/home/${USER}
 ARG FILES=./files
 # set siddhi runner configurations
 ARG RUNTIME_SERVER=siddhi-runner
-ARG RUNTIME_SERVER_VERSION=5.1.0-m1
+ARG RUNTIME_SERVER_VERSION=5.1.0-m2
 ARG RUNTIME_SERVER_PACK=${RUNTIME_SERVER}-${RUNTIME_SERVER_VERSION}
 ARG RUNTIME_SERVER_HOME=${USER_HOME}/${RUNTIME_SERVER}
 # set SIDDHI-IO EULA
@@ -41,14 +41,16 @@ This Docker container comprises of a SIDDHI-IO product, running with its latest 
 which is under the Apache License, Version 2.0. \n\
 Read more about Apache License, Version 2.0 here @ http://www.apache.org/licenses/LICENSE-2.0.\n"
 
-
-# install required packages
-RUN  apk add --update --no-cache netcat-openbsd && \
-     rm -rf /var/cache/apk/*
-
 # create a user group and a user
 RUN  addgroup -g ${USER_GROUP_ID} ${USER_GROUP}; \
      adduser -u ${USER_ID} -D -g '' -h ${USER_HOME} -G ${USER_GROUP} ${USER} ;
+
+# install required packages
+RUN \
+    apk add --no-cache \
+        bash \
+        netcat-openbsd \
+        zip
 
 ## install the Siddhi Distribution to user's home directory
 
