@@ -17,7 +17,7 @@
 # ------------------------------------------------------------------------
 
 # use siddhi-tooling-base
-FROM siddhiio/siddhi-tooling-base:5.1.0-m2
+FROM siddhiio/siddhi-tooling-base:5.1.0-alpha
 MAINTAINER Siddhi IO Docker Maintainers "siddhi-dev@googlegroups.com"
 
 ARG HOST_BUNDLES_DIR=./files/bundles
