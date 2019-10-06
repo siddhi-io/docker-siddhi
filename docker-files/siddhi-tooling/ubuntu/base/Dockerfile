@@ -55,8 +55,19 @@ RUN \
         unzip \
         wget \
         bash \
-    && rm -rf /var/lib/apt/lists/* \
+        vim \
+        curl \
     && echo '[ ! -z "${TERM}" -a -r /etc/motd ] && cat /etc/motd' >> /etc/bash.bashrc; echo "${MOTD}" > /etc/motd
+
+# install ant
+ENV ANT_VERSION 1.10.6
+RUN cd && \
+    wget -q http://www.us.apache.org/dist//ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz && \
+    tar -xzf apache-ant-${ANT_VERSION}-bin.tar.gz && \
+    mv apache-ant-${ANT_VERSION} /opt/ant && \
+    rm apache-ant-${ANT_VERSION}-bin.tar.gz
+ENV ANT_HOME /opt/ant
+ENV PATH ${PATH}:/opt/ant/bin
 
 ## install the Siddhi Distribution to user's home directory
 
