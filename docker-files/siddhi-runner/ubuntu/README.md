@@ -21,9 +21,17 @@ git clone https://github.com/siddhi-io/docker-siddhi.git
 
 ##### 2. Build the base Docker image.
 
-- For base, navigate to `<DOCKERFILE_HOME>/base` directory. <br>
-  Execute `docker build` command as shown below.
-    + `docker build -t siddhiio/siddhi-runner-base-ubuntu:5.1.x .`
+For the base, navigate to `<DOCKERFILE_HOME>/base` directory. You can create the Siddhi runner docker image in two modes such as release mode and local mode. In the release mode, the Siddhi runner pack will be downloaded from GitHub releases. Thus, to build a Siddhi runner docker image in release mode use the following build command.
+
+```sh
+docker build -t siddhiio/siddhi-runner-base-alpine:5.1.x . --build-arg RUNTIME_TYPE="RELEASE"
+```
+
+You can also build Siddhi runner docker image in local mode, which means here it uses a local Siddhi runner pack instead of downloading from GitHub. To do that you have to copy the local Siddhi runner pack to `<DOCKERFILE_HOME>/base/files/pack` directory. Note that, you have to rename Siddhi runner pack name as `siddhi-runner`. After that, you can run the following command to build the Siddhi runner image.
+
+```sh
+docker build -t siddhiio/siddhi-runner-base-alpine:5.1.x . --build-arg RUNTIME_TYPE="DAILY"
+```
 
 ### Building the Siddhi Runner Image
 
