@@ -58,10 +58,10 @@ RUN \
 
 COPY --chown=siddhi_user:siddhi_io ${FILES}/${PACK}/ ${USER_HOME}/
 # download Siddhi Runner Distribution
-RUN if [ "$RUNTIME_TYPE" = "RELEASE" ] ; then wget --no-check-certificate -O ${RUNTIME_SERVER_PACK}.zip "https://github.com/siddhi-io/distribution/releases/download/v${RUNTIME_SERVER_VERSION}/${RUNTIME_SERVER_PACK}.zip" \
+RUN if [ ! -e ${USER_HOME}/${RUNTIME_SERVER} ] ; then wget --no-check-certificate -O ${RUNTIME_SERVER_PACK}.zip "https://github.com/siddhi-io/distribution/releases/download/v${RUNTIME_SERVER_VERSION}/${RUNTIME_SERVER_PACK}.zip" \
     && unzip -d ${USER_HOME} ${RUNTIME_SERVER_PACK}.zip && mv ${USER_HOME}/${RUNTIME_SERVER_PACK} ${RUNTIME_SERVER_HOME} \
     && chown ${USER}:${USER_GROUP} -R ${RUNTIME_SERVER_HOME} \
-    && rm -f ${RUNTIME_SERVER_PACK}.zip ; fi
+    && rm -f ${RUNTIME_SERVER_PACK}.zip ; else echo "Using Local image " ${USER_HOME}/${RUNTIME_SERVER}; fi
 
 # set the user and work directory
 USER ${USER_ID}
