@@ -24,13 +24,13 @@ git clone https://github.com/siddhi-io/docker-siddhi.git
 For the base, navigate to `<DOCKERFILE_HOME>/base` directory. You can create the Siddhi tooling docker image in two modes such as release mode and local mode. In the release mode, the Siddhi tooling pack will be downloaded from GitHub releases. Thus, to build a Siddhi tooling docker image in release mode use the following build command.
 
 ```sh
-docker build -t siddhiio/siddhi-tooling-base:5.1.x . --build-arg RUNTIME_TYPE="RELEASE"
+docker build -t siddhiio/siddhi-tooling-base:5.1.x . 
 ```
 
 You can also build Siddhi tooling docker image in local mode, which means here it uses a local Siddhi tooling pack instead of downloading from GitHub. To do that you have to copy the local Siddhi tooling pack to `<DOCKERFILE_HOME>/base/files/pack` directory. Note that, you have to rename Siddhi tooling pack name as `siddhi-tooling`. After that, you can run the following command to build the Siddhi tooling image.
 
 ```sh
-docker build -t siddhiio/siddhi-tooling-base:5.1.x . --build-arg RUNTIME_TYPE="DAILY"
+docker build -t siddhiio/siddhi-tooling-base:5.1.x .
 ```
 
 ### Building the Siddhi Tooling Image
