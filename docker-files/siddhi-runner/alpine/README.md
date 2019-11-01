@@ -27,7 +27,7 @@ For the base, navigate to `<DOCKERFILE_HOME>/base` directory. You can create the
 docker build -t siddhiio/siddhi-runner-base-alpine:5.1.x .
 ```
 
-You can also build Siddhi runner docker image in local mode, which means here it uses a local Siddhi runner pack instead of downloading from GitHub. To do that you have to copy the local Siddhi runner pack to `<DOCKERFILE_HOME>/base/files/pack` directory. Note that, you have to rename Siddhi runner pack name as `siddhi-runner`. After that, you can run the following command to build the Siddhi runner image.
+You can also build a Siddhi runner docker image in local mode, which means here it uses a local Siddhi runner pack instead of downloading from GitHub. To do that you have to copy the local Siddhi runner zip file to `<DOCKERFILE_HOME>/base/files/pack` directory. After that, you can run the following command to build the Siddhi runner image.
 
 ```sh
 docker build -t siddhiio/siddhi-runner-base-alpine:5.1.x .
