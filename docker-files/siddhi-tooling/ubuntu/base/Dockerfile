@@ -28,11 +28,13 @@ ARG USER_GROUP_ID=802
 ARG USER_HOME=/home/${USER}
 # set dependant files directory
 ARG FILES=./files
+ARG PACK=pack
 # set siddhi-tooling configurations
 ARG RUNTIME_SERVER=siddhi-tooling
 ARG RUNTIME_SERVER_VERSION=5.1.0
 ARG RUNTIME_SERVER_PACK=${RUNTIME_SERVER}-${RUNTIME_SERVER_VERSION}
 ARG RUNTIME_SERVER_HOME=${USER_HOME}/${RUNTIME_SERVER}
+ARG RUNTIME_TYPE
 # set SIDDHI-IO EULA
 ARG MOTD="\n\
 Welcome to Siddhi Docker resources.\n\
@@ -71,16 +73,12 @@ ENV PATH ${PATH}:/opt/ant/bin
 
 ## install the Siddhi Distribution to user's home directory
 
+COPY --chown=siddhi_user:siddhi_io ${FILES}/${PACK}/ ${USER_HOME}/
 # download Siddhi Tooling Distribution
-RUN \
-    wget --no-check-certificate -O ${RUNTIME_SERVER_PACK}.zip "https://github.com/siddhi-io/distribution/releases/download/v${RUNTIME_SERVER_VERSION}/${RUNTIME_SERVER_PACK}.zip" \
+RUN if [ ! -e ${USER_HOME}/${RUNTIME_SERVER} ] ; then wget --no-check-certificate -O ${RUNTIME_SERVER_PACK}.zip "https://github.com/siddhi-io/distribution/releases/download/v${RUNTIME_SERVER_VERSION}/${RUNTIME_SERVER_PACK}.zip" \
     && unzip -d ${USER_HOME} ${RUNTIME_SERVER_PACK}.zip && mv ${USER_HOME}/${RUNTIME_SERVER_PACK} ${RUNTIME_SERVER_HOME} \
     && chown ${USER}:${USER_GROUP} -R ${RUNTIME_SERVER_HOME} \
-    && rm -f ${RUNTIME_SERVER_PACK}.zip
-
-# use the Siddhi Tooling Distribution available locally
-# Note: Comment the RUN command under 'Download Siddhi Distribution' heading and uncomment the below COPY command
-# COPY --chown=siddhi_user:siddhi_io ${FILES}/${RUNTIME_SERVER_PACK}/ ${RUNTIME_SERVER_HOME}/
+    && rm -f ${RUNTIME_SERVER_PACK}.zip ; else echo "Using Local image " ${USER_HOME}/${RUNTIME_SERVER}; fi
 
 # set the user and work directory
 USER ${USER_ID}
