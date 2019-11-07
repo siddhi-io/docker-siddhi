@@ -17,7 +17,8 @@
 # ------------------------------------------------------------------------
 
 # use siddhi-runner-base
-FROM siddhiio/siddhi-runner-base-ubuntu:5.1.0
+ARG SIDDHI_RUNNER_BASE_IMAGE=siddhiio/siddhi-runner-base-ubuntu:latest
+FROM ${SIDDHI_RUNNER_BASE_IMAGE}
 MAINTAINER Siddhi IO Docker Maintainers "siddhi-dev@googlegroups.com"
 
 ARG HOST_BUNDLES_DIR=./files/bundles

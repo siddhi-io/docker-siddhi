@@ -17,7 +17,8 @@
 # ------------------------------------------------------------------------
 
 # use siddhi-tooling-base
-FROM siddhiio/siddhi-tooling-base:5.1.0
+ARG SIDDHI_TOOLING_BASE_IMAGE=siddhiio/siddhi-tooling-base:latest
+FROM ${SIDDHI_TOOLING_BASE_IMAGE}
 MAINTAINER Siddhi IO Docker Maintainers "siddhi-dev@googlegroups.com"
 
 ARG HOST_BUNDLES_DIR=./files/bundles
