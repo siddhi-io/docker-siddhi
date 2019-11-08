@@ -17,7 +17,7 @@
 # ------------------------------------------------------------------------
 
 # set base Docker image to AdoptOpenJDK Alpine Docker image
-FROM adoptopenjdk/openjdk8:jdk8u212-b03-alpine
+FROM adoptopenjdk/openjdk8:jdk8u212-b03-alpine-slim
 MAINTAINER Siddhi IO Docker Maintainers "siddhi-dev@googlegroups.com"
 
 # set user configurations
@@ -61,8 +61,8 @@ COPY --chown=siddhi_user:siddhi_io ${FILES}/${PACK}/ ${USER_HOME}/
 RUN if [ ! -e ${USER_HOME}/${RUNTIME_SERVER}*.zip ] ; then wget --no-check-certificate -O ${USER_HOME}/${RUNTIME_SERVER_PACK}.zip "https://github.com/siddhi-io/distribution/releases/download/v${RUNTIME_SERVER_VERSION}/${RUNTIME_SERVER_PACK}.zip" \
     ; else echo "Using Local image "; fi
 
-RUN unzip -d ${USER_HOME} ${USER_HOME}/${RUNTIME_SERVER}*.zip && for file in ${USER_HOME}/${RUNTIME_SERVER}*; do mv $file ${USER_HOME}/${RUNTIME_SERVER}; done \
-    && chown ${USER}:${USER_GROUP} -R ${RUNTIME_SERVER_HOME} && rm -f {USER_HOME}/${RUNTIME_SERVER_PACK}.zip
+RUN unzip -d ${USER_HOME} ${USER_HOME}/${RUNTIME_SERVER}*.zip && rm -f ${USER_HOME}/${RUNTIME_SERVER}*.zip && for file in ${USER_HOME}/${RUNTIME_SERVER}*; do mv $file ${USER_HOME}/${RUNTIME_SERVER}; done \
+    && chown ${USER}:${USER_GROUP} -R ${RUNTIME_SERVER_HOME}
 
 # set the user and work directory
 USER ${USER_ID}
