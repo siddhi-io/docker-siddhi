@@ -21,7 +21,9 @@ ARG SIDDHI_RUNNER_BASE_IMAGE=siddhiio/siddhi-runner-base-alpine:latest
 FROM ${SIDDHI_RUNNER_BASE_IMAGE}
 MAINTAINER Siddhi IO Docker Maintainers "siddhi-dev@googlegroups.com"
 
-ARG USER_ID=802
+ARG USER=siddhi_user
+ARG USER_GROUP=siddhi_io
+ARG USER_GROUP_ID=802
 ARG HOST_BUNDLES_DIR=./files/bundles
 ARG HOST_JARS_DIR=./files/jars
 ARG JARS=${RUNTIME_SERVER_HOME}/jars
@@ -37,7 +39,8 @@ COPY --chown=siddhi_user:siddhi_io ${HOST_JARS_DIR}/ ${JARS}
 # expose ports
 EXPOSE 9090 9443 9712 9612 7711 7611 7070 7443
 
-RUN apk add --no-cache bash && bash ${RUNTIME_SERVER_HOME}/bin/install-jars.sh && apk del bash
+RUN apk add --no-cache bash && bash ${RUNTIME_SERVER_HOME}/bin/install-jars.sh \
+&& apk del bash && chown ${USER}:${USER_GROUP} -R ${RUNTIME_SERVER_HOME}/lib
 
 USER ${USER_ID}
 
