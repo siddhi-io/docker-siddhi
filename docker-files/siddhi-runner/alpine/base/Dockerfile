@@ -17,7 +17,7 @@
 # ------------------------------------------------------------------------
 
 # set base Docker image to AdoptOpenJDK Alpine Docker image
-FROM adoptopenjdk/openjdk8:jdk8u212-b03-alpine-slim
+FROM adoptopenjdk/openjdk8:jdk8u222-b10-alpine-slim
 MAINTAINER Siddhi IO Docker Maintainers "siddhi-dev@googlegroups.com"
 
 # set user configurations
@@ -47,25 +47,18 @@ Read more about Apache License, Version 2.0 here @ http://www.apache.org/license
 RUN  addgroup -g ${USER_GROUP_ID} ${USER_GROUP}; \
      adduser -u ${USER_ID} -D -g '' -h ${USER_HOME} -G ${USER_GROUP} ${USER} ;
 
-# install required packages
-RUN \
-    apk add --no-cache \
-        bash \
-        netcat-openbsd \
-        zip
-
 ## install the Siddhi Distribution to user's home directory
-
 COPY --chown=siddhi_user:siddhi_io ${FILES}/${PACK}/ ${USER_HOME}/
+
 # download Siddhi Runner Distribution
-RUN if [ ! -e ${USER_HOME}/${RUNTIME_SERVER}*.zip ] ; then wget --no-check-certificate -O ${USER_HOME}/${RUNTIME_SERVER_PACK}.zip "https://github.com/siddhi-io/distribution/releases/download/v${RUNTIME_SERVER_VERSION}/${RUNTIME_SERVER_PACK}.zip" \
-    ; else echo "Using Local image "; fi
+RUN \
+    apk add --no-cache zip && if [ ! -e ${USER_HOME}/${RUNTIME_SERVER}*.zip ] ; then wget --no-check-certificate -O ${USER_HOME}/${RUNTIME_SERVER_PACK}.zip "https://github.com/siddhi-io/distribution/releases/download/v${RUNTIME_SERVER_VERSION}/${RUNTIME_SERVER_PACK}.zip" \
+    ; else echo "Using Local image "; fi && \
+    unzip -d ${USER_HOME} ${USER_HOME}/${RUNTIME_SERVER}*.zip && rm -f ${USER_HOME}/${RUNTIME_SERVER}*.zip && for file in ${USER_HOME}/${RUNTIME_SERVER}*; do mv $file ${USER_HOME}/${RUNTIME_SERVER}; done \
+    && chown ${USER}:${USER_GROUP} -R ${RUNTIME_SERVER_HOME} && \
+    apk del zip
 
-RUN unzip -d ${USER_HOME} ${USER_HOME}/${RUNTIME_SERVER}*.zip && rm -f ${USER_HOME}/${RUNTIME_SERVER}*.zip && for file in ${USER_HOME}/${RUNTIME_SERVER}*; do mv $file ${USER_HOME}/${RUNTIME_SERVER}; done \
-    && chown ${USER}:${USER_GROUP} -R ${RUNTIME_SERVER_HOME}
-
-# set the user and work directory
-USER ${USER_ID}
+# set the work directory
 WORKDIR ${USER_HOME}
 
 # set environment variables
