@@ -17,7 +17,7 @@
 # ------------------------------------------------------------------------
 
 # set base Docker image to AdoptOpenJDK Ubuntu Docker image
-FROM adoptopenjdk/openjdk8:jdk8u192-b12-slim
+FROM adoptopenjdk/openjdk8:jdk8u192-b12
 MAINTAINER Siddhi IO Docker Maintainers "siddhi-dev@googlegroups.com"
 
 # set user configurations

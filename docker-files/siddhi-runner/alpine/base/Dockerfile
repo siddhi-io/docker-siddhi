@@ -17,7 +17,7 @@
 # ------------------------------------------------------------------------
 
 # set base Docker image to AdoptOpenJDK Alpine Docker image
-FROM adoptopenjdk/openjdk8:jdk8u222-b10-alpine-slim
+FROM adoptopenjdk/openjdk8:jdk8u222-b10-alpine
 MAINTAINER Siddhi IO Docker Maintainers "siddhi-dev@googlegroups.com"
 
 # set user configurations
